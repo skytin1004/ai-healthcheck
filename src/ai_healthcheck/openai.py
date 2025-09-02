@@ -10,8 +10,6 @@ logger = logging.getLogger(__name__)
 
 def _build_chat_url(endpoint: str) -> str:
     base = (endpoint or "").rstrip("/")
-    # OpenAI base endpoint usually is https://api.openai.com/v1
-    # Chat completions path is /chat/completions
     if base.endswith("/v1"):
         return f"{base}/chat/completions"
     return f"{base}/v1/chat/completions"
@@ -21,6 +19,7 @@ def check_openai(
     endpoint: str,
     api_key: str,
     model: str,
+    org_id: str | None = None,
     timeout: float = 10.0,
 ) -> HealthResult:
     """Health-check OpenAI chat completions.
@@ -28,6 +27,9 @@ def check_openai(
     Behavior:
     - 200 -> ok=True
     - else (401/403 and other non-2xx, or network errors) -> ok=False with details
+    
+    Notes:
+    - If `org_id` is provided, it will be sent via the `OpenAI-Organization` header.
     """
     if not endpoint or not api_key or not model:
         raise ValueError(
@@ -40,6 +42,8 @@ def check_openai(
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
     }
+    if org_id:
+        headers["OpenAI-Organization"] = org_id
     payload = {
         "model": model,
         "messages": [
