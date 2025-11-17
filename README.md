@@ -11,6 +11,9 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 ### 🌐 Multi-Language Support
+
+#### Supported by [Localizeflow](https://localizeflow.com/)
+
 [Korean](./translations/ko/README.md)
 
 Lightweight health checks for OpenAI — no heavy SDKs required.
