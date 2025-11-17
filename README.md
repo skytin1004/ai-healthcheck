@@ -13,7 +13,7 @@
 ### 🌐 Multi-Language Support
 [Korean](./translations/ko/README.md)
 
-Lightweight health checks for OpenAI — no heavy SDKs are required.
+Lightweight health checks for OpenAI — no heavy SDKs required.
 
 - Minimal data-plane calls with tiny payloads and short timeouts
 - Clear, predictable behavior (always returns `HealthResult`)
