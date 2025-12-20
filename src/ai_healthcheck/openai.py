@@ -49,9 +49,7 @@ def check_openai(
         "messages": [
             {"role": "system", "content": "health check"},
             {"role": "user", "content": "ping"},
-        ],
-        "max_tokens": 1,
-        "temperature": 0,
+        ]
     }
 
     try:
