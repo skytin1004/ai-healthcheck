@@ -1,23 +1,23 @@
 <!--
 CO_OP_TRANSLATOR_METADATA:
 {
-  "original_hash": "c031243407285fc1d62d6bbe36ef214a",
-  "translation_date": "2025-11-17T06:28:45+00:00",
+  "original_hash": "a8365deb72800dd8d1632c3128e87b64",
+  "translation_date": "2025-12-28T13:18:10+00:00",
   "source_file": "README.md",
   "language_code": "ko"
 }
 -->
 # ai-healthcheck
 
-[![Python package](https://img.shields.io/pypi/v/ai-healthcheck?color=4BA3FF)](https://pypi.org/project/ai-healthcheck/)
-[![License: MIT](https://img.shields.io/github/license/skytin1004/ai-healthcheck?color=4BA3FF)](https://github.com/skytin1004/ai-healthcheck/blob/main/LICENSE)
-[![Downloads](https://static.pepy.tech/badge/ai-healthcheck)](https://pepy.tech/project/ai-healthcheck)
-[![Downloads](https://static.pepy.tech/badge/ai-healthcheck/month)](https://pepy.tech/project/ai-healthcheck)
+[![Python 패키지](https://img.shields.io/pypi/v/ai-healthcheck?color=4BA3FF)](https://pypi.org/project/ai-healthcheck/)
+[![라이선스: MIT](https://img.shields.io/github/license/skytin1004/ai-healthcheck?color=4BA3FF)](https://github.com/skytin1004/ai-healthcheck/blob/main/LICENSE)
+[![다운로드 수](https://static.pepy.tech/badge/ai-healthcheck)](https://pepy.tech/project/ai-healthcheck)
+[![다운로드 수](https://static.pepy.tech/badge/ai-healthcheck/month)](https://pepy.tech/project/ai-healthcheck)
 
-[![GitHub contributors](https://img.shields.io/github/contributors/skytin1004/ai-healthcheck.svg)](https://GitHub.com/skytin1004/ai-healthcheck/graphs/contributors/)
-[![GitHub issues](https://img.shields.io/github/issues/skytin1004/ai-healthcheck.svg)](https://GitHub.com/skytin1004/ai-healthcheck/issues/)
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/skytin1004/ai-healthcheck.svg)](https://GitHub.com/skytin1004/ai-healthcheck/pulls/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![GitHub 기여자](https://img.shields.io/github/contributors/skytin1004/ai-healthcheck.svg)](https://GitHub.com/skytin1004/ai-healthcheck/graphs/contributors/)
+[![GitHub 이슈](https://img.shields.io/github/issues/skytin1004/ai-healthcheck.svg)](https://GitHub.com/skytin1004/ai-healthcheck/issues/)
+[![GitHub 풀 리퀘스트](https://img.shields.io/github/issues-pr/skytin1004/ai-healthcheck.svg)](https://GitHub.com/skytin1004/ai-healthcheck/pulls/)
+[![PRs 환영](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 ### 🌐 다국어 지원
 
@@ -25,12 +25,12 @@ CO_OP_TRANSLATOR_METADATA:
 
 [한국어](./README.md)
 
-OpenAI를 위한 가벼운 헬스 체크 — 무거운 SDK는 필요 없습니다.
+OpenAI용 경량 헬스 체크 — 무거운 SDK가 필요 없습니다.
 
-- 최소한의 데이터 전송과 짧은 타임아웃으로 빠른 호출
-- 명확하고 예측 가능한 동작 (항상 `HealthResult` 반환)
-- 설치 용량이 작음 (`requests`만 사용)
-- 애플리케이션 시작 프로브나 CI/CD 스모크 테스트에 최적
+- 최소한의 데이터 플레인 호출(작은 페이로드와 짧은 타임아웃)
+- 명확하고 예측 가능한 동작(항상 `HealthResult` 반환)
+- 작은 설치 크기(`requests`만 사용)
+- 애플리케이션 시작 프로브 및 CI/CD 스모크 테스트에 적합
 
 ## 설치
 
@@ -40,17 +40,17 @@ pip install ai-healthcheck
 
 ## 빠른 시작
 
-환경 변수 예시처럼 자격 증명을 설정한 후 체크를 호출하세요.
+자격 증명(예: 환경 변수 사용)을 설정한 뒤 체크를 호출하세요.
 
 ```python
 import os
 from ai_healthcheck import check_openai
 
 res = check_openai(
-    endpoint=os.environ["OPENAI_ENDPOINT"],  # e.g., https://api.openai.com
+    endpoint=os.environ["OPENAI_ENDPOINT"],  # 예: https://api.openai.com
     api_key=os.environ["OPENAI_API_KEY"],
-    model="gpt-4o-mini",
-    # Optional: scope to an organization if your account uses one
+    model="gpt-5-mini",
+    # 선택 사항: 계정이 조직을 사용하는 경우 조직으로 범위를 지정
     # org_id=os.environ.get("OPENAI_ORG_ID"),
 )
 print(res)
@@ -59,11 +59,11 @@ print(res)
 ### 샘플 출력
 
 ```python
-# HealthResult(provider='openai',
-#              endpoint='https://api.openai.com',
-#              ok=True,
-#              status_code=200,
-#              message='OpenAI reachable. Credentials and model appear valid.')
+# HealthResult(제공자='openai',
+#              엔드포인트='https://api.openai.com',
+#              정상=True,
+#              상태_코드=200,
+#              메시지='OpenAI에 연결 가능. 자격 증명과 모델이 유효한 것으로 보입니다.')
 ```
 
 ## 사용법
@@ -74,31 +74,31 @@ from ai_healthcheck import check_openai
 res = check_openai(
     endpoint="https://api.openai.com",
     api_key="***",
-    model="gpt-4o-mini",
-    # Optional organization header
+    model="gpt-5-mini",
+    # 선택적 조직 헤더
     # org_id="org_12345",
     timeout=10.0,
 )
 print(res.ok, res.status_code, res.message)
 ```
 
-동작 방식:
+동작:
 - 200 -> ok=True
-- 그 외 (401/403 및 기타 2xx가 아닌 상태, 네트워크 오류) -> ok=False와 상세 정보 반환
+- 그 외(401/403 및 기타 non-2xx, 또는 네트워크 오류) -> ok=False(세부 정보 포함)
 
-## 참고 사항
+## 참고
 
-- `requests`만 사용하며 SDK 의존성 없음.
-- 사용자 지정 User-Agent 헤더는 설정하지 않음 (요청을 최소화하기 위함).
+- `requests`만 사용; SDK 의존성이 없음.
+- 사용자 정의 User-Agent 헤더를 설정하지 않음(요청을 최소화).
 
 ## 문제 해결
 
-- 404: API 키는 유효할 수 있으나 엔드포인트/경로나 모델 이름이 잘못되었을 가능성 있음. 엔드포인트(예: `/v1`이 한 번만 포함되었는지)와 모델을 확인하세요.
-- 401/403: 인증 또는 권한 오류. API 키와 계정 접근 권한을 점검하세요.
+- 404: API 키는 유효할 수 있으나, 엔드포인트/경로 또는 모델 이름이 잘못되었을 가능성이 있습니다. 엔드포인트(예: `/v1`를 한 번만 포함)와 모델을 확인하세요.
+- 401/403: 인증/권한 오류. API 키 및 계정 접근 권한을 확인하세요.
 
 ## CI/CD 및 시작 프로브
 
-파이프라인이나 앱 시작 시 이 체크를 사용해 빠르게 실패를 감지하고 명확한 안내를 받을 수 있습니다.
+이러한 체크를 파이프라인이나 앱 시작 시 사용하여 명확한 안내와 함께 빠르게 실패 처리하세요.
 
 ```python
 def app_startup_probe():
@@ -108,6 +108,6 @@ def app_startup_probe():
         raise RuntimeError(f"OpenAI health check failed: {res.message}")
 ```
 
-## 기여하기
+## 기여
 
-기여를 환영합니다! GitHub에서 이슈와 풀 리퀘스트를 열어 주세요.
+기여는 환영입니다! GitHub에 이슈와 풀 리퀘스트를 열어주세요.
