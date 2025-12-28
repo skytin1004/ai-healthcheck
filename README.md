@@ -40,7 +40,7 @@ from ai_healthcheck import check_openai
 res = check_openai(
     endpoint=os.environ["OPENAI_ENDPOINT"],  # e.g., https://api.openai.com
     api_key=os.environ["OPENAI_API_KEY"],
-    model="gpt-4o-mini",
+    model="gpt-5-mini",
     # Optional: scope to an organization if your account uses one
     # org_id=os.environ.get("OPENAI_ORG_ID"),
 )
@@ -65,7 +65,7 @@ from ai_healthcheck import check_openai
 res = check_openai(
     endpoint="https://api.openai.com",
     api_key="***",
-    model="gpt-4o-mini",
+    model="gpt-5-mini",
     # Optional organization header
     # org_id="org_12345",
     timeout=10.0,
