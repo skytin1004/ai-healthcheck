@@ -10,6 +10,7 @@
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/skytin1004/ai-healthcheck.svg)](https://GitHub.com/skytin1004/ai-healthcheck/pulls/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
+## Languages
 [Chinese](./translations/zh/README.md) | [French](./translations/fr/README.md) | [Japanese](./translations/ja/README.md) | [Korean](./translations/ko/README.md) | [Spanish](./translations/es/README.md)
 
 Lightweight health checks for OpenAI — no heavy SDKs required.
