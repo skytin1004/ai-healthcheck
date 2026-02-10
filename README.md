@@ -14,7 +14,7 @@
 
 #### Supported by [Localizeflow](https://localizeflow.com/)
 
-[Korean](./translations/ko/README.md)
+[Chinese](./translations/zh/README.md) | [French](./translations/fr/README.md) | [Japanese](./translations/ja/README.md) | [Korean](./translations/ko/README.md) | [Spanish](./translations/es/README.md)
 
 Lightweight health checks for OpenAI — no heavy SDKs required.
 
