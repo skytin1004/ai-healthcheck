@@ -1,12 +1,3 @@
-<!--
-CO_OP_TRANSLATOR_METADATA:
-{
-  "original_hash": "a8365deb72800dd8d1632c3128e87b64",
-  "translation_date": "2025-12-28T13:18:10+00:00",
-  "source_file": "README.md",
-  "language_code": "ko"
-}
--->
 # ai-healthcheck
 
 [![Python 패키지](https://img.shields.io/pypi/v/ai-healthcheck?color=4BA3FF)](https://pypi.org/project/ai-healthcheck/)
